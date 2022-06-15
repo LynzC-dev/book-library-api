@@ -1,0 +1,11 @@
+const readersRouter = require('express').Router ();
+const {create, findAll, findById, update, destroy} = require('../controllers/reader');
+
+
+readersRouter.post('/',create);
+readersRouter.get('/',findAll);
+readersRouter.get('/:readerId',findById);
+readersRouter.patch('/:readerId',update);
+readersRouter.delete('/:readerId',destroy);
+
+module.exports = readersRouter

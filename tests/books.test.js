@@ -35,7 +35,7 @@ describe('/books', () => {
       let books;
   
       beforeEach(async () => {
-        readers = await Promise.all([
+        books = await Promise.all([
           Book.create({
             title: 'The lido',
             author: 'Libby Page',
@@ -74,12 +74,12 @@ describe('/books', () => {
   
       describe('GET /books/:id', () => {
         it('gets book record by id', async () => {
-          const reader = books[0];
+          const book = books[0];
           const response = await request(app).get(`/books/${book.id}`);
   
           expect(response.status).to.equal(200);
-          expect(response.body.title).to.equal(reader.title);
-          expect(response.body.author).to.equal(reader.author);
+          expect(response.body.title).to.equal(book.title);
+          expect(response.body.author).to.equal(book.author);
         });
   
         it('returns a 404 if the book does not exist', async () => {
