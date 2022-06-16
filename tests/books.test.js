@@ -28,6 +28,14 @@ describe('/books', () => {
           expect(newBookRecord.author).to.equal('Libby Page');
           expect(newBookRecord.genre).to.equal('fiction');
         });
+        
+        it("returns error message if data is invalid", async () => {
+            const {status} = await request(app).post("/readers").send({
+                title: 'The lido',
+                author: 'Libby Page',
+            });
+            expect(status).to.equal(400);
+          });
       });
     });
   
